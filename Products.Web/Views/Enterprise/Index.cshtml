@@ -1,0 +1,37 @@
+﻿@using MetaShare.Common.Core.Presentation
+@using Products.Entities
+@using Products.Web.HtmlExtensions
+@using Products.Web.Models
+<!--add customized code between this region-->
+<!--add customized code between this region-->
+
+@model IndexViewModel<Products.Entities.Enterprise>
+@{
+    ViewBag.Title = "Index";
+    Layout  = "~/Views/Shared/_Layout.cshtml";
+<!--add customized code between this region-->
+<!--add customized code between this region-->
+}
+
+<div class="m_title_box">
+    <ol>
+        <li data-id="Enterprise">
+            <a href="#">Enterprise</a><i class="icon-arrowright"></i>
+        </li>
+        <li data-id="Index">Index</li>
+    </ol>
+    <div class="m_title_action">
+        <a class="m_btn" href="@(this.Url.Action("Create", "Enterprise", null))">New</a>
+    </div>
+</div>
+<div class="panel panel-default">
+    
+    <div class="panel-heading">Enterprise</div>
+    <div class="panel-body">
+            @Html.Partial(Url.Content("_Search"), Model.SearchModel)
+    <div class="table-responsive" id="Enterprise_DataList">
+            @Html.Partial(Url.Content("_DataList"), Model)
+    </div>
+    </div>
+</div>
+@this.Html.Partial("_DeleteDialog")

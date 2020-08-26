@@ -1,0 +1,51 @@
+﻿@using MetaShare.Common.Core.Presentation
+@using Products.Entities
+@using Products.Web.HtmlExtensions
+@using Products.Web.Models
+<!--add customized code between this region-->
+<!--add customized code between this region-->
+
+@model IndexViewModel<School>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+		<th class="text-left">Name</th>
+		<th class="text-left">Phone</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if (Model.TargetPager != null && Model.TargetPager.Datas != null)
+            {
+            foreach (Products.Entities.School schoolItem in Model.TargetPager.Datas)
+                        {
+                <tr>
+			<td  class="text-left">
+				@Html.DisplayFor(modelItem => schoolItem.Name)
+			</td>
+			<td class="text-left">
+				@Html.DisplayFor(modelItem => schoolItem.Phone)
+			</td>
+                    <td>
+                        @Html.ActionLink(" ", "Details", new { id = schoolItem.Id, Controller = "School", area = ""}, new {@class="m_details", title="Details" })
+                        @Html.ActionLink(" ", "Edit", new { id = schoolItem.Id, Controller = "School", area = ""}, new {@class="m_edit", title="Edit" })
+                        @Html.ActionLink(" ", "#", "#",null , new {href = "javascript:void(0);",@class="m_delete", title="Delete", onclick = " javascript:metaShare.basic.prototype.deleteTableColumn(this,'" + schoolItem.Id + "','" + Url.Action("Delete",new {Controller = "School", area = ""}) + "'); return false; "})
+                    </td>
+                </tr>
+            }
+            }
+<!--add customized code between this region-->
+<!--add customized code between this region-->
+            </tbody>
+        </table>
+
+
+        <div class="UserPagerDiv text-center">
+    @{
+        object conditions = new
+        {
+            Name = Model.SearchModel != null ? Model.SearchModel.Name : "",
+        };
+    }
+        @Html.AjaxRenderPager(Model.TargetPager, "Search", "School","School_DataList", conditions)
+        </div>

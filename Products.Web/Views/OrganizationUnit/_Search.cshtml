@@ -1,0 +1,17 @@
+﻿@using Products.Web.HtmlExtensions
+@using Products.Web.Models
+<!--add customized code between this region-->
+<!--add customized code between this region-->
+
+@model SearchModel
+<div class="search-container">
+    @using (Html.BeginForm("Search", "OrganizationUnit", FormMethod.Post, new {data_ajax = "true", data_ajax_method = "POST", data_ajax_mode = "replace", data_ajax_update = "#OrganizationUnit_DataList", name = "OrganizationUnit_Search", id = "OrganizationUnit_Search"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.TextBoxFor(m => m.Name, new {@class = "form-control", placeholder ="Name"})
+        @Html.HiddenFor(m => m.Pager.PageSize)
+
+        <input class="m_btn" type="submit" value="Search"/>
+    }
+</div>
+

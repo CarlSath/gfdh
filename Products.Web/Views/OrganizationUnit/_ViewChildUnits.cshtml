@@ -1,0 +1,53 @@
+﻿<!--add customized code between this region-->
+<!--add customized code between this region-->
+@model Products.Web.Models.OrganizationUnitModel
+
+<script src='@this.Url.Content("~/Scripts/modal.js")'></script>
+<script src='@this.Url.Content("~/Scripts/editCollection.js")'></script>
+
+<table class="table table-striped table-bordered table-hover table_form" id="ChildUnits" >
+    <thead>
+        <tr>
+	<th class="text-left">Name</th>
+	<th class="text-left">Description</th>
+	<th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.ChildUnits != null && Model.ChildUnits.Count > 0)
+    {
+        for (int i = 0; i < Model.ChildUnits.Count; i++)
+        {
+           <tr class="data_tr">
+                <td class="text-left">
+                    @Html.TextBoxFor(p => Model.ChildUnits[i].Name, new { @class = "readonly", @readonly = "readonly" })
+                </td>
+                <td class="text-left">
+                    @Html.TextBoxFor(p => Model.ChildUnits[i].Description, new { @class = "readonly", @readonly = "readonly" })
+                </td>
+                <td class="center">
+                    @Html.ActionLink(" ", "#", "#", new { href = "javascript:void(0);", @class = "m_details", title = "Details", onclick = "editChildUnits.viewItem(this)" })
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+<div class="mask" id="editOrganizationUnit">
+    <div class="product_catalog">
+        <div class="title">
+            <button type="button" class="close" onclick="MetaShare.Modal.prototype.closeModal('editOrganizationUnit') " style="right: 1%;">&times; </button>
+            <h4 style="width: 100%; margin: 0px">OrganizationUnit</h4>
+        </div>
+        <div class="border_line modal_view modal_scroll" id="editOrganizationUnitContent">
+             @Html.Partial("_ViewOneOrganizationUnit", Model)
+        </div>
+    </div>
+</div>
+
+<script>
+    var editChildUnits = new MetaShare.EditCollection("ChildUnits", "organizationUnitTemplate", "editOrganizationUnit", "ChildUnits", "EditOneOrganizationUnit");
+/*add customized code between this region*/
+/*add customized code between this region*/
+</script>

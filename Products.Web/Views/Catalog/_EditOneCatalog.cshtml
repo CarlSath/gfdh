@@ -1,0 +1,50 @@
+﻿@using Products.Web.HtmlExtensions
+<!--add customized code between this region-->
+<!--add customized code between this region-->
+@model Products.Web.Models.CatalogModel
+
+@Html.Hidden("EditOneCatalog.Id")
+@Html.Hidden("EditOneCatalog.OwnerId")
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="Name" class="col-md-4 from-title">Name</label>
+            <div class="col-md-8 from-cont">
+                @Html.TextBox("EditOneCatalog.Name", null, new {@class = "form-control"})
+                @Html.ValidationMessage("EditOneCatalog.Name")
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="Description" class="col-md-4 from-title">Description</label>
+            <div class="col-md-8 from-cont">
+                @Html.TextBox("EditOneCatalog.Description", null, new {@class = "form-control"})
+                @Html.ValidationMessage("EditOneCatalog.Description")
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="Code"  class="col-md-4 from-title" >Code</label>
+            <div class="col-md-8 from-cont">
+                @Html.TextBox("EditOneCatalog.Code", null, new { @class = "form-control" } )
+                @Html.ValidationMessage("EditOneCatalog.Code")
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="submit">
+    <input type="button" value="Cancel" class="cancel" onclick="editSubCatalogs.cancelItem()"/>
+    <input type="button" value="Save" class="ok" onclick="editSubCatalogs.saveItem(this)"/>
+</div>
+<script>
+    $(document)
+        .ready(function() {
+<!--add customized code between this region-->
+<!--add customized code between this region-->
+        });
+</script>

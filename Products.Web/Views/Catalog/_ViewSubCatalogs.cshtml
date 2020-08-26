@@ -1,0 +1,58 @@
+﻿<!--add customized code between this region-->
+<!--add customized code between this region-->
+@model Products.Web.Models.CatalogModel
+
+<script src='@this.Url.Content("~/Scripts/modal.js")'></script>
+<script src='@this.Url.Content("~/Scripts/editCollection.js")'></script>
+
+<table class="table table-striped table-bordered table-hover table_form" id="SubCatalogs" >
+    <thead>
+        <tr>
+	<th class="text-left">Name</th>
+	<th class="text-left">Code</th>
+	<th class="text-left">Description</th>
+	<th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.SubCatalogs != null && Model.SubCatalogs.Count > 0)
+    {
+        for (int i = 0; i < Model.SubCatalogs.Count; i++)
+        {
+           <tr class="data_tr">
+                <td class="text-left">
+                    @Html.HiddenFor(p => Model.SubCatalogs[i].Id)
+                    @Html.TextBoxFor(p => Model.SubCatalogs[i].Name, new { @class = "readonly", @readonly = "readonly" })
+                </td>
+                <td class="text-left">
+                    @Html.TextBoxFor(p => Model.SubCatalogs[i].Code, new { @class = "readonly", @readonly = "readonly" })
+                </td>
+                <td class="text-left">
+                    @Html.TextBoxFor(p => Model.SubCatalogs[i].Description, new { @class = "readonly", @readonly = "readonly" })
+                </td>
+                <td class="center">
+                    @Html.ActionLink(" ", "#", "#", new { href = "javascript:void(0);", @class = "m_details", title = "Details", onclick = "editSubCatalogs.viewItem(this)" })
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+<div class="mask" id="editCatalog">
+    <div class="product_catalog">
+        <div class="title">
+            <button type="button" class="close" onclick="MetaShare.Modal.prototype.closeModal('editCatalog') " style="right: 1%;">&times; </button>
+            <h4 style="width: 100%; margin: 0px">Catalog</h4>
+        </div>
+        <div class="border_line modal_view modal_scroll" id="editCatalogContent">
+             @Html.Partial("_ViewOneCatalog", Model)
+        </div>
+    </div>
+</div>
+
+<script>
+    var editSubCatalogs = new MetaShare.EditCollection("SubCatalogs", "catalogTemplate", "editCatalog", "SubCatalogs", "EditOneCatalog");
+/*add customized code between this region*/
+/*add customized code between this region*/
+</script>

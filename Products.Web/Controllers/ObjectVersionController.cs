@@ -1,0 +1,37 @@
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
+using MetaShare.Common.Core.Entities;
+using MetaShare.Common.Core.Services.Version;
+using Products.Web.Models;
+/*add customized code between this region*/
+/*add customized code between this region*/
+
+namespace Products.Web.Controllers
+{
+	public class ObjectVersionController<TEntity, TService, TModel> : CommonController<TEntity, TService, TModel> where TEntity : ObjectVersion, new() where TService : IObjectVersionService<TEntity> where TModel : CommonModel<TEntity>, new()
+	{
+		public ActionResult ViewHistories(int id)
+        {
+            List<TEntity> entities = this.Service.SelectAllVersions(id);
+            return this.ToAction("Histories", entities);
+        }
+
+        public ActionResult ViewOneHistoryVersion(int systemId)
+        {
+            TEntity entity = this.Service.SelectBySystemId(systemId);
+            if (entity == null)
+            {
+                return this.Json(new RequestResult() { IsSucceed = false, Message = DataIsNotExist }, new JsonSerializerSettings(){ ContractResolver= new DefaultContractResolver() });
+            }
+            TModel model = new TModel();
+            model.PopulateFrom(entity);
+
+            return this.ToAction("OneVersion", model);
+        }
+		/*add customized code between this region*/
+		/*add customized code between this region*/
+	}
+}

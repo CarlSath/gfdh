@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Products.Services.Interfaces</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MetaShare.Common.Core" Version="1.0.0.6" />
+  </ItemGroup>
+  <!--add customized code between this region-->
+  <!--add customized code between this region-->
+
+  <ItemGroup>
+
+    <ProjectReference Include="..\Products.Entities\Products.Entities.csproj" />
+
+    <!--add customized code between this region-->
+    <!--add customized code between this region-->
+  </ItemGroup>
+
+</Project>

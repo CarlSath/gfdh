@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout  = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #page-inner{
+        padding-bottom: 0 !important;
+    }
+    .panel-conter {
+        margin-left: 15px;
+        width: calc(80% - 20px);
+        min-height: 730px;
+        background: white;
+        padding: 20px 20px 0;
+        font-family: Microsoft YaHei UI;
+    }
+
+        .panel-conter h3 {
+            text-align: center;
+            font-size: 28px;
+            color: #191919;
+            font-weight: bold;
+            padding: 10px 0 20px 0;
+        }
+
+        .panel-conter p {
+            color: #737373;
+            font-size: 16px;
+        }
+
+    .content_title {
+        margin: 40px 0;
+    }
+
+        .content_title .circular {
+            width: 8px;
+            height: 8px;
+            vertical-align: middle;
+            margin-bottom: 4px;
+            display: inline-block;
+            background-color: #244E76;
+            margin-right: 10px;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+        }
+
+        .content_title h4 {
+            color: #191919;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+</style>
+
+<div class="m_title_box">
+    <ol>
+      
+        <li data-id="Index">起始页</li>
+    </ol>
+    
+</div>
+<div class="panel panel-default">
+    <div class="panel-conter">
+        <h3>欢迎使用元元方</h3>
+        <p>元元方是由Metashare.Inc团队研发的遵循MDA模型驱动开发架构，实现模型和代码高复用，提供强大知识库基于开发体系的智能开发平台。</p>
+        <div class="content_title">
+            <h4><span class="circular"></span>为什么我部署的网页是空白页？</h4>
+            <p>您的应用目前没有任何实体类添加或模型转换，请添加相应的实体类或检查各层模型转换后重新部署应用。</p>
+        </div>
+        <div class="content_title">
+            <h4><span class="circular"></span>我应该如何添加实体类？</h4>
+            <p>打开您要修改应用的【概念模型】页面，点击页面中【Addpackage】为您的应用添加您所需要的包同时为您的包命名。选中您所添加的包，点击【AddEnumeration】在包中添加您所需要的实体类，如：在名为【学生管理】的包下，添加一个【student】实体类。</p>
+        </div>
+        <div class="content_title">
+            <h4><span class="circular"></span>我应该如何录入实体类之间的关联关系？</h4>
+            <p>选中您要关联的两个实体类中的任意一个，点击【EditBusinessEntity】，点击【Associations】标签后的【+】号，选中要关联的实体类，同时编辑他们之间的关联关系，点击【OK】保存实体类之间的关联关系。</p>
+        </div>
+        <div class="content_title">
+            <h4><span class="circular"></span>我生成的应用可以用于商业生产么？</h4>
+            <p>元元方仅作为一个工具提供应用自动部署功能，对应用的用途及内容不起到监管作用，因此造成的任何事故，损失元元方不具备共同承担的责任。有关于元元方部署应用的一切解释权利归元元方所有。</p>
+        </div>
+        <div class="content_title">
+            <h4>还有未解答的疑问？</h4>
+            <h4>请跳转至帮助中心或联系元元方团队售后，联系邮箱joe.huang@metashare.com.cn</h4>
+        </div>
+    </div>
+</div>
+
+<script>
+    var winHeight = $(window).height() - 130;
+    $(".panel-conter").css("height",winHeight);
+    $(window).resize(function() {
+        winHeight = $(window).height() - 130;
+        $(".panel-conter").css("height",winHeight);
+    });
+</script>

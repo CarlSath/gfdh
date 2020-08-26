@@ -1,0 +1,39 @@
+﻿@using Products.Web.HtmlExtensions
+<!--add customized code between this region-->
+<!--add customized code between this region-->
+@model Products.Web.Models.OrganizationUnitModel
+
+@Html.Hidden("EditOneOrganizationUnit.Id")
+@Html.Hidden("EditOneOrganizationUnit.OwnerId")
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="Name" class="col-md-4 from-title">Name</label>
+            <div class="col-md-8 from-cont">
+                @Html.TextBox("EditOneOrganizationUnit.Name", null, new {@class = "form-control"})
+                @Html.ValidationMessage("EditOneOrganizationUnit.Name")
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="Description" class="col-md-4 from-title">Description</label>
+            <div class="col-md-8 from-cont">
+                @Html.TextBox("EditOneOrganizationUnit.Description", null, new {@class = "form-control"})
+                @Html.ValidationMessage("EditOneOrganizationUnit.Description")
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="submit">
+    <input type="button" value="Cancel" class="cancel" onclick="editChildUnits.cancelItem()"/>
+    <input type="button" value="Save" class="ok" onclick="editChildUnits.saveItem(this)"/>
+</div>
+<script>
+    $(document)
+        .ready(function() {
+<!--add customized code between this region-->
+<!--add customized code between this region-->
+        });
+</script>
